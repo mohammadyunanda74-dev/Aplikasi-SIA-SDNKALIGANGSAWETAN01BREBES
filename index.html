@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIA SEKOLAH – SDN KALIGANGSA WETAN 01</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%231e40af'/><polygon points='50,15 80,75 20,75' fill='%23fbbf24'/><text x='50' y='60' font-size='20' font-weight='bold' text-anchor='middle' fill='%23ffffff'>SDN01</text></svg>">
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================================
+       1. PORTAL LANDING PAGE PUBLIK (AKSES TERBUKA TANPA LOGIN)
+       ========================================================== -->
+  <div id="public-portal-container">
+    <!-- Di-render secara dinamis oleh app.renderPublicPortal() -->
+  </div>
+
+  <!-- ==========================================================
+       2. TAMPILAN APLIKASI UTAMA (SETELAH LOGIN OPERATOR / GURU / KEPSEK)
+       ========================================================== -->
+  <div id="app-container" style="display: none;">
+    <!-- SIDEBAR NAVIGASI KIRI -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%2315803d'/><path d='M50 20 L78 36 L78 64 L50 80 L22 64 L22 36 Z' fill='%23ffffff'/><text x='50' y='54' font-size='12' font-weight='bold' text-anchor='middle' fill='%2315803d'>SDN 01</text></svg>" alt="Logo Sekolah" class="sidebar-logo">
+        <div class="sidebar-title-wrap">
+          <h2>SDN KALIGANGSA WETAN 01</h2>
+          <p>Kecamatan Brebes</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Menu Utama</div>
+        <a class="nav-item active" id="nav-dashboard" onclick="window.app.navigate('dashboard')">
+          <i class="bi bi-speedometer2"></i>
+          <span>Dashboard Utama</span>
+        </a>
+
+        <div class="nav-section-title">Kesiswaan & Mutasi</div>
+        <a class="nav-item menu-operator-only" id="nav-siswa" onclick="window.app.navigate('siswa')">
+          <i class="bi bi-people-fill"></i>
+          <span>Data Siswa</span>
+        </a>
+        <a class="nav-item menu-operator-only" id="nav-mutasi-masuk" onclick="window.app.navigate('mutasi-masuk')">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Data Siswa Masuk</span>
+        </a>
+        <a class="nav-item menu-operator-only" id="nav-mutasi-keluar" onclick="window.app.navigate('mutasi-keluar')">
+          <i class="bi bi-box-arrow-left"></i>
+          <span>Data Siswa Keluar</span>
+        </a>
+
+        <div class="nav-section-title">Kepegawaian (GTK)</div>
+        <a class="nav-item menu-operator-only" id="nav-gtk" onclick="window.app.navigate('gtk')">
+          <i class="bi bi-person-badge-fill"></i>
+          <span>Data Guru & Tendik</span>
+        </a>
+
+        <div class="nav-section-title">Tata Usaha & Persuratan</div>
+        <a class="nav-item menu-operator-only" id="nav-surat" onclick="window.app.navigate('surat')">
+          <i class="bi bi-envelope-paper-fill"></i>
+          <span>Pusat Surat Resmi</span>
+          <span class="nav-badge">64+ Jenis</span>
+        </a>
+        <a class="nav-item menu-operator-only" id="nav-agenda-keluar" onclick="window.app.navigate('agenda-keluar')">
+          <i class="bi bi-journal-arrow-up"></i>
+          <span>Agenda Surat Keluar</span>
+        </a>
+        <a class="nav-item menu-operator-only" id="nav-agenda-masuk" onclick="window.app.navigate('agenda-masuk')">
+          <i class="bi bi-journal-arrow-down"></i>
+          <span>Agenda Surat Masuk</span>
+        </a>
+
+        <div class="nav-section-title">Sistem Absensi Sekolah</div>
+        <a class="nav-item menu-guru-only" id="nav-absensi-mandiri" onclick="window.app.navigate('absensi-mandiri')">
+          <i class="bi bi-phone-fill"></i>
+          <span>Absensi Mandiri (HP)</span>
+          <span class="nav-badge" style="background:#16a34a;">Live</span>
+        </a>
+        <a class="nav-item menu-operator-only" id="nav-absensi-siswa" onclick="window.app.navigate('absensi-siswa')">
+          <i class="bi bi-calendar-check"></i>
+          <span>Absensi Harian Siswa</span>
+        </a>
+        <a class="nav-item menu-operator-only" id="nav-rekap-absensi-siswa" onclick="window.app.navigate('rekap-absensi-siswa')">
+          <i class="bi bi-pie-chart"></i>
+          <span>Rekap Absensi Siswa</span>
+        </a>
+        <a class="nav-item menu-operator-only" id="nav-absensi-guru" onclick="window.app.navigate('absensi-guru')">
+          <i class="bi bi-fingerprint"></i>
+          <span>Monitoring Absensi GTK</span>
+        </a>
+
+        <div class="nav-section-title">Laporan & Pengaturan</div>
+        <a class="nav-item" id="nav-laporan" onclick="window.app.navigate('laporan')">
+          <i class="bi bi-file-earmark-bar-graph"></i>
+          <span>Pusat Laporan Sekolah</span>
+        </a>
+        <a class="nav-item menu-operator-only" id="nav-pengaturan" onclick="window.app.navigate('pengaturan')">
+          <i class="bi bi-palette-fill"></i>
+          <span>Pengaturan & Tampilan</span>
+        </a>
+      </nav>
+
+      <!-- USER FOOTER DI SIDEBAR -->
+      <div class="sidebar-footer">
+        <div class="user-snippet">
+          <div class="user-avatar-sm" id="sidebar-user-avatar">A</div>
+          <div class="user-info-text">
+            <div class="user-name" id="sidebar-user-name">Ahmad Fauzi</div>
+            <div class="user-role" id="sidebar-user-role">Operator Sekolah</div>
+          </div>
+        </div>
+        <button class="btn-sidebar-logout" title="Keluar dari Sistem" onclick="window.app.logout()">
+          <i class="bi bi-power"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- WRAPPER KONTEN KANAN -->
+    <div class="main-wrapper">
+      <!-- TOPBAR HEADER -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="btn-toggle-sidebar" onclick="window.app.toggleSidebar()" title="Toggle Sidebar">
+            <i class="bi bi-list"></i>
+          </button>
+          <div class="page-breadcrumb">
+            <span>SIA Sekolah</span>
+            <i class="bi bi-chevron-right" style="font-size: 10px;"></i>
+            <span class="current-page" id="topbar-breadcrumb-title">Dashboard Utama</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="school-badge-pill">
+            <i class="bi bi-building-check"></i>
+            <span>SDN Kaligangsa Wetan 01 Brebes</span>
+          </div>
+          <div class="topbar-time" id="topbar-live-clock">
+            12:00:00 WIB
+          </div>
+          <button class="btn btn-outline-secondary btn-sm" onclick="window.app.showPublicPortal()" title="Lihat Web Profil Publik">
+            <i class="bi bi-globe"></i> Web Publik
+          </button>
+        </div>
+      </header>
+
+      <!-- CONTENT AREA UTAMA (DINAMIS) -->
+      <main class="content-area">
+        <div id="modul-konten">
+          <!-- Modul di-inject di sini secara reaktif -->
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       SCRIPTS ARSITEKTUR APLIKASI
+       ========================================================== -->
+  <script src="assets/js/modules/surat-templates.js"></script>
+  <script src="assets/js/data-store.js"></script>
+  <script src="assets/js/modules/siswa.js"></script>
+  <script src="assets/js/modules/mutasi.js"></script>
+  <script src="assets/js/modules/gtk.js"></script>
+  <script src="assets/js/modules/surat.js"></script>
+  <script src="assets/js/modules/agenda.js"></script>
+  <script src="assets/js/modules/absensi-siswa.js"></script>
+  <script src="assets/js/modules/absensi-guru.js"></script>
+  <script src="assets/js/modules/absensi-mandiri.js"></script>
+  <script src="assets/js/modules/laporan.js"></script>
+  <script src="assets/js/modules/pengaturan.js"></script>
+  <script src="assets/js/app.js"></script>
+
+</body>
+</html>
